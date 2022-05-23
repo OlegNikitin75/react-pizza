@@ -2,7 +2,7 @@
   "name": "react-pizza",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://OlegNikitin75.io/react-pizza",
+  "homepage": "https://OlegNikitin75.github.io/react-pizza",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
