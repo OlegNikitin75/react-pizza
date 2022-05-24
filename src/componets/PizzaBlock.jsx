@@ -1,28 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const PizzaBlock = () => {
+const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
+  const pizzaType = ['тонкое', 'традиционное'];
+  const [activeType, setActiveType] = useState(0);
+  const [activeSize, setActiveSize] = useState(0);
+
   return (
     <div className="pizza-block">
       <img
         className="pizza-block__image"
-        src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-        alt="Pizza"
+        src={imageUrl}
+        alt={name}
       />
-      <h4 className="pizza-block__title">Чизбургер-пицца</h4>
+      <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {
+            types.map((type, index) =>
+              <li
+                key={`type ${index}`}
+                className={activeType === index ? "active" : ""}
+                onClick={() => setActiveType(index)}
+              >
+                {pizzaType[type]}
+              </li>
+            )
+          }
         </ul>
         <ul>
-          <li className="active">26 см.
-          </li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {
+            sizes.map((size, index) =>
+              <li
+                key={`size ${index}`}
+                className={activeSize === index ? "active" : ""}
+                onClick={() => setActiveSize(index)}>
+                {size} см.
+              </li>
+            )}
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от 395 ₽</div>
+        <div className="pizza-block__price">от {price} ₽</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
@@ -37,7 +55,7 @@ const PizzaBlock = () => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          <i>0</i>
         </div>
       </div>
     </div>
