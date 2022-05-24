@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../img/pizza-logo.svg';
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -13,7 +14,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="header__cart">
-          <a href="/cart.html" className="button button--cart">
+          <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter" />
             <svg
@@ -46,7 +47,7 @@ const Navbar = () => {
               />
             </svg>
             <span>3</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
