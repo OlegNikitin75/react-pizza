@@ -13,7 +13,7 @@ const Categories = () => {
           categories.map((item, index) => (
             <li onClick={() => handleCategory(index)}
                 className={categoryIndex === index ? "active" : ""}
-                key={`Category ${index}`}
+                key={index}
             >
               {item}
             </li>
