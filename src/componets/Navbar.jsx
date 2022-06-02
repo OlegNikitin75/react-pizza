@@ -6,13 +6,13 @@ const Navbar = () => {
   return (
     <div className="header">
       <div className="container">
-        <div className="header__logo">
+        <Link to="/" className="header__logo">
           <img src={logo} alt="Pizza logo" width="38"/>
           <div>
             <h1>React Pizza</h1>
             <p>самая вкусная пицца во вселенной</p>
           </div>
-        </div>
+        </Link>
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>

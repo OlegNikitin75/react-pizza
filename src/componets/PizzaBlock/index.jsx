@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
+const PizzaBlock= ({name, price, imageUrl, sizes, types}) => {
   const pizzaType = ['тонкое', 'традиционное'];
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);

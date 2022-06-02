@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Categories = () => {
+const Categories = ({categoryIndex,setCategoryIndex}) => {
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-  const [categoryIndex, setCategoryIndex] = useState(0);
+
   const handleCategory = (index) => {
     setCategoryIndex(index);
   };

@@ -1,47 +1,24 @@
 import {Routes, Route} from "react-router-dom";
-import Layout from "./componets/Layout";
 import './scss/app.scss';
-import Categories from "./componets/Categories";
-import Sort from "./componets/Sort";
-import PizzaBlock from "./componets/PizzaBlock";
-import pizzas from "./assets/pizzas.json";
+import Home from "./componets/pages/Home";
+import Navbar from "./componets/Navbar";
+import NotFound from "./componets/pages/NotFound";
+import Cart from "./componets/pages/Cart";
 
 const App = () => {
 
+
   return (
     <div>
-
-      <Routes>
-        <Route path="/" element={<Layout/>}/>
-        {/* <Route index element={<Home />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/crew" element={<Crew />} />
-          <Route path="/technology" element={<Technology />} />
-        </Route> */}
-
-      </Routes>
-
       <div className="wrapper">
-
+        <Navbar/>
         <div className="content">
-          <div className="container">
-            <div className="content__top">
-              <Categories/>
-              <Sort/>
-
-            </div>
-            <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
-              {
-                pizzas.map((pizza, index) => (
-                  <PizzaBlock
-                    key={`pizza ${index}`}
-                    {...pizza}
-                  />
-                ))
-              }
-            </div>
-          </div>
+            <Routes>
+              <Route index element={<Home/>}/>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/cart" element={<Cart/>}/>
+              <Route path="*" element={<NotFound/>}/>
+            </Routes>
         </div>
       </div>
     </div>
