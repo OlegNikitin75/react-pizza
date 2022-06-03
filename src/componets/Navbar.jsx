@@ -1,18 +1,21 @@
 import React from 'react';
 import logo from '../assets/img/pizza-logo.svg';
 import {Link} from "react-router-dom";
+import Search from "./Search";
 
 const Navbar = () => {
+
   return (
     <div className="header">
       <div className="container">
         <Link to="/" className="header__logo">
           <img src={logo} alt="Pizza logo" width="38"/>
           <div>
-            <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
+            <h1>Alex Pizza</h1>
+            <p>самая вкусная пицца в городе</p>
           </div>
         </Link>
+        <Search/>
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>

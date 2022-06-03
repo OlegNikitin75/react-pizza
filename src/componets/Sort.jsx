@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 const Sort = ({sortType, setSortType}) => {
-  console.log(sortType)
   const [popupOpen, setPopupOpen] = useState(false);
 
   const list = [
