@@ -2,7 +2,6 @@ import React from 'react';
 
 const Categories = ({categoryIndex,setCategoryIndex}) => {
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-
   const handleCategory = (index) => {
     setCategoryIndex(index);
   };
