@@ -2,8 +2,12 @@ import React from 'react';
 import logo from '../assets/img/pizza-logo.svg';
 import {Link} from "react-router-dom";
 import Search from "./Search";
+import {useSelector} from "react-redux";
 
 const Navbar = () => {
+
+  const {items, totalPrice} = useSelector(state => state.cartSlice);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 
   return (
     <div className="header">
@@ -18,8 +22,8 @@ const Navbar = () => {
         <Search/>
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
-            <span>520 ₽</span>
-            <div className="button__delimiter" />
+            <span>{totalPrice} ₽</span>
+            <div className="button__delimiter"/>
             <svg
               width="18"
               height="18"
@@ -49,14 +53,13 @@ const Navbar = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>3</span>
+            <span>{totalCount}</span>
           </Link>
         </div>
       </div>
     </div>
   );
 };
-
 
 
 export default Navbar;
