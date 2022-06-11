@@ -14,6 +14,7 @@ const Search = () => {
     searchRef.current.focus();
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = useCallback(
     debounce((value) => {
       setSearchValue(value);
