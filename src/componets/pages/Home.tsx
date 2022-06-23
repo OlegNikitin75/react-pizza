@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import Categories from "../Categories.tsx";
-import Sort, { list } from "../Sort.tsx";
+import Categories from "../Categories";
+import Sort, { list } from "../Sort";
 import Skeleton from "../PizzaBlock/Skeleton";
 import PizzaBlock from "../PizzaBlock";
 import Pagination from "../Pagination";
@@ -16,7 +16,9 @@ import { fetchPizzas, selectPizzas } from "../../redux/slices/pizzasSlice";
 
 const Home = () => {
   const { items, status } = useSelector(selectPizzas);
+
   const { categoryId, sort, currentPage, searchValue } = useSelector(
+    // @ts-ignore
     (state) => state.filterSlice
   );
   const dispatch = useDispatch();
@@ -24,10 +26,10 @@ const Home = () => {
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
-  const onChangePage = (number) => {
+  const onChangePage = (number: number) => {
     dispatch(setCurrentPage(number));
   };
 
@@ -38,6 +40,7 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
+      // @ts-ignore
       fetchPizzas({
         sortBy,
         orderValue,
@@ -64,7 +67,9 @@ const Home = () => {
   useEffect(() => {
     if (window.location.hash) {
       const params = qs.parse(window.location.hash.substring(3));
-      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
+      const sort = list.find(
+        (obj: any) => obj.sortProperty === params.sortProperty
+      );
       dispatch(
         setFilters({
           ...params,
@@ -84,7 +89,7 @@ const Home = () => {
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
-  const pizzasItems = items.map((pizza, index) => (
+  const pizzasItems = items.map((pizza: any, index: number) => (
     <PizzaBlock key={`pizza ${index}`} {...pizza} />
   ));
   // Фильтрация при помощи JS (подходит для статики, если ограничен массив элементов)

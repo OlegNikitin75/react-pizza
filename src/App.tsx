@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./scss/app.scss";
 import Home from "./componets/pages/Home";
-import Navbar from "./componets/Navbar";
 import NotFound from "./componets/pages/NotFound";
 import Cart from "./componets/pages/Cart";
 import FullPizza from "./componets/pages/FullPizza";

@@ -4,15 +4,15 @@ import styles from "./Search.module.scss";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 
-const Search = () => {
+const Search: React.FC = () => {
   const dispatch = useDispatch();
-  const searchRef = useRef();
+  const searchRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
 
   const onClickClear = () => {
     setValue("");
     dispatch(setSearchValue(""));
-    searchRef.current.focus();
+    if (searchRef.current) searchRef.current.focus();
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,7 +23,7 @@ const Search = () => {
     []
   );
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
