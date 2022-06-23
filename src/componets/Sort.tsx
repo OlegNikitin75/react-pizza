@@ -1,20 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {setSort} from "../redux/slices/filterSlice";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSort, setSort } from "../redux/slices/filterSlice";
 
 export const list = [
-    {name: 'популярности 🠕', sortProperty: 'rating'},
-    {name: 'популярности 🠗', sortProperty: '-rating'},
-    {name: 'цене 🠕', sortProperty: 'price'},
-    {name: 'цене 🠗', sortProperty: '-price'},
-    {name: 'алфавиту 🠕', sortProperty: 'name'},
-    {name: 'алфавиту 🠗', sortProperty: '-name'}
-  ]
-;
+  { name: "популярности 🠕", sortProperty: "rating" },
+  { name: "популярности 🠗", sortProperty: "-rating" },
+  { name: "цене 🠕", sortProperty: "price" },
+  { name: "цене 🠗", sortProperty: "-price" },
+  { name: "алфавиту 🠕", sortProperty: "name" },
+  { name: "алфавиту 🠗", sortProperty: "-name" },
+];
 
 const Sort = () => {
   const dispatch = useDispatch();
-  const sort = useSelector(state => state.filterSlice.sort);
+  const sort = useSelector(selectSort);
   const sortRef = useRef();
   const [popupOpen, setPopupOpen] = useState(false);
 
@@ -28,10 +27,9 @@ const Sort = () => {
         setPopupOpen(false);
       }
     };
-    document.body.addEventListener('click', handleClickOutside);
-    return () => document.body.removeEventListener('click', handleClickOutside);
+    document.body.addEventListener("click", handleClickOutside);
+    return () => document.body.removeEventListener("click", handleClickOutside);
   }, []);
-
 
   return (
     <div ref={sortRef} className="sort">
@@ -52,23 +50,25 @@ const Sort = () => {
         <b>Сортировка по:</b>
         <span onClick={() => setPopupOpen(!popupOpen)}>{sort.name}</span>
       </div>
-      {
-        popupOpen && <div className="sort__popup">
+      {popupOpen && (
+        <div className="sort__popup">
           <ul>
-            {
-              list.map((item, index) =>
-                <li key={index}
-                    className={sort.sortProperty === item.sortProperty ? "active" : ""}
-                    onClick={() => handleClickItem(item)}
-                >{item.name}
-                </li>
-              )
-            }
+            {list.map((item, index) => (
+              <li
+                key={index}
+                className={
+                  sort.sortProperty === item.sortProperty ? "active" : ""
+                }
+                onClick={() => handleClickItem(item)}
+              >
+                {item.name}
+              </li>
+            ))}
           </ul>
         </div>
-      }
+      )}
     </div>
   );
-}
+};
 
 export default Sort;
